@@ -2,77 +2,41 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Routes File
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
+| Here is where you will register all of the routes in an application.
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
 */
 
-Route::get('/', ['as' => 'home', function () {
+Route::get('/', ['as'=>'home',function () {
     return view('welcome');
 }]);
 
-Route::get('/article/{id}', ['as' => 'article', function ($id) {
-    echo $id;
-}]);
+Route::get('/about/{id}', 'FirstController@show');
+
+Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
+Route::get('/article/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
+
+//Route::get('/pages/add', 'Admin\CoreResource@add');
+//Route::resource('/pages', 'Admin\CoreResource', ['except'=>['index', 'show']]);
 
 
-Route::get('/page/{cat}/{id}/', function ($var1, $var2) {
-    echo '<pre>';
-    echo $var1 . '|' . $var2;
-    echo '</pre>';
-});//->where(['cat'=>'[A-Za-z]+']);
+Route::controller('/pages', 'PagesController', ['getCreate'=>'pages.create']);
 
-//Route::get('/page/', function () {
-//    echo '<pre>';
-//    echo 'rrrr';
-//    echo '</pre>';
-//});
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
 
-
-//Route::get('/page/{cat}/{id}/', function ($var1, $var2) {
-//    echo '<pre>';
-//
-//    echo $var1 . '|' . $var2;
-//    echo '</pre>';
-//
-//})->where(['cat'=>'[A-Za-z]+']);
-
-
-//Route::post('/comments', function (){
-//
-//   print_r($_POST);
-//});
-
-//Route::match(['get', 'post'],'/comments', function (){
-//
-//   print_r($_POST);
-//});
-
-//Route::any('/comments', function (){
-//    print_r($_POST);
-//});
-
-
-Route::group(['prefix' => 'admin/{id}'], function () {
-    Route::get('/page/create/{v}', function ($v) {
-        //echo route('home');
-        //return redirect()->route('home');
-        //return redirect()->route('article', ['id'=>25]);
-
-        $routes = Route::current();
-        //echo $routes->getName();
-        //echo $routes->getParameter('v', 111);
-        print_r($routes->parameters());
-
-    })->name('createpage');
-
-
-    Route::get('/page/edit/', function () {
-        echo 'page/edit';
-    });
-
+Route::group(['middleware' => ['web']], function () {
+    //
 });
