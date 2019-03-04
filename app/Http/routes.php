@@ -11,14 +11,23 @@
 |
 */
 
-Route::get('/', ['as'=>'home',function () {
-    return view('welcome');
-}]);
+//Route::get('/', ['as'=>'home',function () {
+//    return view('welcome');
+//}]);
+
+Route::get('/', ['as'=>'home',  'uses'=>'Admin\IndexController@show'])/*->middleware(['mymiddle'])*/;
+
 
 Route::get('/about/{id}', 'FirstController@show');
 
 Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
-Route::get('/article/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
+
+Route::get('/article/{page}', [
+    'uses'=>'Admin\Core@getArticle',
+    'as'=>'article',
+    //'middleware'=>['mymiddle'] //Может быть несколько посредников
+    'middleware'=>['mymiddle:home'] //Передача параметров
+]);
 
 //Route::get('/pages/add', 'Admin\CoreResource@add');
 //Route::resource('/pages', 'Admin\CoreResource', ['except'=>['index', 'show']]);
