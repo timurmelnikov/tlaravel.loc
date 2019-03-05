@@ -11,29 +11,16 @@
 |
 */
 
-//Route::get('/', ['as'=>'home',function () {
-//    return view('welcome');
-//}]);
+Route::get('/', ['as'=>'home','uses'=>'Admin\IndexController@show']);
 
-Route::get('/', ['as'=>'home',  'uses'=>'Admin\IndexController@show'])/*->middleware(['mymiddle'])*/;
+Route::get('/about/{id}','FirstController@show');
 
 
-Route::get('/about/{id}', 'FirstController@show');
-
-Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
-
-Route::get('/article/{page}', [
-    'uses'=>'Admin\Core@getArticle',
-    'as'=>'article',
-    //'middleware'=>['mymiddle'] //Может быть несколько посредников
-    'middleware'=>['mymiddle:home'] //Передача параметров
-]);
-
-//Route::get('/pages/add', 'Admin\CoreResource@add');
-//Route::resource('/pages', 'Admin\CoreResource', ['except'=>['index', 'show']]);
+Route::get('/articles',['uses'=>'Admin\Core@getArticles','as'=>'articles']);
 
 
-Route::controller('/pages', 'PagesController', ['getCreate'=>'pages.create']);
+Route::get('/article/{page}',['middleware'=>'mymiddle:home','uses'=>'Admin\Core@getArticle','as'=>'article'])/*->middleware(['mymiddle'])*/;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +35,9 @@ Route::controller('/pages', 'PagesController', ['getCreate'=>'pages.create']);
 
 Route::group(['middleware' => ['web']], function () {
     //
+    ////
+    
+    
+    ///
+    
 });
