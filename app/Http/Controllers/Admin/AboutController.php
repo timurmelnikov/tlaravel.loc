@@ -9,7 +9,15 @@ use App\Http\Controllers\Controller;
 
 class AboutController extends Controller
 {
-    public function show(){
-        echo 'AboutController';
-    }
+    //
+    
+    public function show() {
+        if(view()->exists('default.about')) {
+            return view('default.about',['title'=>'Hello World']);
+        }
+        abort(404);
+
+
+	}
+    
 }
