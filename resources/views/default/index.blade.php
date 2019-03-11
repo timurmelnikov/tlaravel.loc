@@ -1,24 +1,27 @@
 @extends('default.layouts.layout')
 
 @section('navbar')
-    @parent
+	@parent
 @endsection
 
 @section('header')
-    @parent
+	@parent
 @endsection
+
 
 @section('sidebar')
-    @parent
-    <div class="sidebar-module">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui. </p>
+	@parent
+	
+	<div class="sidebar-module">
+     <h4>About</h4>
+     <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
     </div>
+	
 @endsection
 
+
+
 @section('content')
-    @include('default.content')
-@endsection
+      	@include('default.content')
+@endsection 
 

@@ -9,13 +9,37 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
-    //
-    public function show() {
+    public function show()
+    {
 
-		if(view()->exists('default.index')) {
-			return view('default.index',['title'=>'Hello World']);
-		}
-		abort(404);
 
-	}
+        $array = [
+            'title' => 'Laravel project',
+            'data' => [
+
+                'one' => 'List 1',
+                'two' => 'List 2',
+                'three' => 'List 3',
+                'four' => 'List 4',
+                'five' => 'List 5'
+                /**/
+            ],
+
+            'dataI' => [
+                'List 1',
+                'List 2',
+                'List 3',
+                'List 4',
+                'List 5',
+            ],
+            'bvar' => true,
+            'script' => "<script>alert('hello');</script>"
+        ];
+
+
+        if (view()->exists('default.index')) {
+            return view('default.index', $array);
+        }
+        abort(404);
+    }
 }
