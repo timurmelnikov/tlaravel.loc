@@ -1,1 +1,2 @@
-<li>{{$value.'000'}}</li>
+include
+<li>{{ $value }}</li>

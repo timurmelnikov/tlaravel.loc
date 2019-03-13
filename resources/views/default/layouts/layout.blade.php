@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<title>{{$title}}</title>
+		<title>{{ $title }}</title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -21,10 +21,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<?php echo route('home'); ?>">Home</a></li>
+            <li class="active"><a href="{{ route('home')}}">Home</a></li>
             <li><a href="{{ route('about') }}">About</a></li>
-            <li><a href="{{ route('articles') }}">Articles</a></li>
-            <li><a href="{{ route('article',array('id'=>10)) }}">Article</a></li>
+            <li><a href="{{ route('articles')}}">Articles</a></li>
+            <li><a href="{{ route('article',array('id'=>10))}}">Article</a></li>
+              <li><a href="{{ route('contact')}}">Contact</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
