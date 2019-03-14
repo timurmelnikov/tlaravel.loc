@@ -15,9 +15,16 @@ class ContactController extends Controller
 //        $this->request = $request;
 //    }
 
-    public function show(Request $request)
+    public function show(Request $request, $id=false)
     {
         print_r($request->all());
+
+        //echo '<h1 style="margin-top: 100px">'.$request->input('name', 'Ivan').'</h1>';
+
+        if($request->has('name')){
+            echo '<h1 style="margin-top: 100px">'.$request->input('name', 'Ivan').'</h1>';
+        }
+
         return view('default.contact', ['title' => 'Contacts']);
     }
     //
