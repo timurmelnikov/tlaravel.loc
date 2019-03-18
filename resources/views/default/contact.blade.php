@@ -11,7 +11,7 @@
             This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
         </p>
 
-        <form method="post" action="{{ route('contact') }}">
+        <form method="post" action="{{ route('contact', ['name'=>'Hello!']) }}">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="" placeholder="Jane Doe">
