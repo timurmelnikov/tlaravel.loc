@@ -23,10 +23,21 @@ class ContactController extends Controller
 
         //echo '<h1 style="margin-top: 100px">'.$request->input('name', 'Ivan').'</h1>';
 
-        if($request->has('name')){
-            echo '<h1 style="margin-top: 100px">'.$request->name.'</h1>';
-        }
 
+//        if($request->has('name')){
+//            echo '<h1 style="margin-top: 100px">'.$request->name.'</h1>';
+//        }
+
+
+
+
+//        if($request->is('contact/*')){
+//            echo '<h1 style="margin-top: 100px">'.$request->path().'</h1>';
+//        }
+
+
+        echo '<h1 style="margin-top: 100px">'.$request->url().'</h1>';
+        echo '<h1 style="margin-top: 100px">'.$request->fullUrl().'</h1>';
         return view('default.contact', ['title' => 'Contacts']);
     }
     //
